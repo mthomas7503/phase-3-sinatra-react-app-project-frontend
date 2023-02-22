@@ -5,15 +5,22 @@ import { useState, useEffect } from 'react'
 import Home from './Home.js';
 import About from './About.js';
 import NavBar from './NavBar';
+import Zones from './Zones';
 import Monsters from './Monsters';
 import './App.css';
 
 function App() {
-  [zoneList, setZoneList] = useState([])
+  const [zoneList, setZoneList] = useState([])
+  const [monsterList, setMonsterList] = useState([])
 
-  useEffect(fetch("http://localhost:9292/zones")
+  useEffect(() => {fetch("http://localhost:9292/zones")
   .then(r => r.json())
-  .then(z => setZoneList(z)))
+  .then(z => setZoneList(z))}, [])
+
+  function handleOnClick() {fetch("http://localhost:9292/monsters")
+  .then(r => r.json())
+  .then(z => setMonsterList(z))}
+  
 
   return (
     <div className="App">
@@ -21,7 +28,8 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="zones" element={<Zone zones={zoneList}/>} />
+        <Route path="zones" element={<Zones zones={zoneList} click={handleOnClick}/>} />
+        <Route path="Monsters" elements={<Monsters monsters={monsterList}/>} />
       </Routes>
     </div>
   );
