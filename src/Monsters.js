@@ -1,14 +1,10 @@
 import React from "react";
 
-function Monsters(monsters) {
-
+function Monsters({ monster }) {
+console.log(monster)
     return(
         <div>
-            {monsters => {
-                return(
-                    <p>pending</p>
-                )
-            }}
+            <p>{monster.name}</p>
         </div>
     )
 }
