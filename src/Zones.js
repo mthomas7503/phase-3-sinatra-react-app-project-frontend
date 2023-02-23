@@ -7,7 +7,7 @@ function Zones({zones, click, monsterList}) {
         {zones.map(
             (zone, index) => {return(<Zone key={zone.id} area={zone} handleOnClick={click} monsterList={monsterList}/>)}
         )}
-        <button onClick={handleOnClick}>Click here to show all monsters for each zone!!!</button>
+        <button onClick={click}>Click here to show all monsters for each zone!!!</button>
         </div>)
         
     }

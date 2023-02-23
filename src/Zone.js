@@ -1,7 +1,7 @@
 import React from "react";
 import Monsters from "./Monsters";
 
-function Zone({ area, handleOnClick, monsterList }) {
+function Zone({ area, monsterList }) {
 
    const zoneMonsters = monsterList.filter(monster => monster.zone_id === area.id)
 
@@ -12,7 +12,7 @@ console.log(monsterList)
                 <p>Region: {area.region}</p>
                 <p>{area.info}</p>
                 <p>
-                    {monsterList ? zoneMonsters.map(monster => {return (<Monsters key={monster.zone_id} monster={monster}/>)}):<p}
+                    {monsterList ? zoneMonsters.map(monster => {return (<Monsters key={monster.zone_id} monster={monster}/>)}):<p>Scroll to the bottom to show monsters for this region.</p>}
                 </p>
             </div>
     )
