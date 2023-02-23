@@ -21,6 +21,10 @@ function App() {
   fetch(`http://localhost:9292/monsters`)
   .then(r => r.json())
   .then(z => {setMonsterList(z)})}
+
+  function handleOnDelete(e) {
+    console.log(e.key)
+  }
   
 
   return (
@@ -29,7 +33,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="zones" element={<Zones zones={zoneList} monsterList={monsterList} click={handleOnClick}/>} />
+        <Route path="zones" element={<Zones zones={zoneList} handleDelete={handleOnDelete} monsterList={monsterList} click={handleOnClick}/>} />
         <Route path="Monsters" elements={<Monsters monsters={monsterList}/>} />
       </Routes>
     </div>

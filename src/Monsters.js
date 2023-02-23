@@ -1,12 +1,10 @@
 import React from "react";
 
-function Monsters({ monster }) {
-console.log(monster)
+function Monsters({ monster, handleDelete }) {
     return(
         <div>
-            <p>{monster.name}</p>
+            <p>{monster.name}<button key={monster.id} onClick={handleDelete}>x</button></p>
             <p>{monster.info}</p>
-            <p></p>
         </div>
     )
 }
