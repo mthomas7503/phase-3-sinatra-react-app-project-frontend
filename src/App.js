@@ -15,7 +15,7 @@ function App() {
 
   useEffect(() => {fetch("http://localhost:9292/zones")
   .then(r => r.json())
-  .then(z => setZoneList(z))}, [])
+  .then(z => setZoneList(z))}, [monsterList])
 
   function handleOnClick(e) {
   fetch(`http://localhost:9292/monsters`)

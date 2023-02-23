@@ -5,6 +5,8 @@ console.log(monster)
     return(
         <div>
             <p>{monster.name}</p>
+            <p>{monster.info}</p>
+            <p></p>
         </div>
     )
 }
