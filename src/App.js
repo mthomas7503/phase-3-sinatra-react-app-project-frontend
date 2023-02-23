@@ -6,12 +6,15 @@ import Home from './Home.js';
 import About from './About.js';
 import NavBar from './NavBar';
 import Zones from './Zones';
+import UpdateDelete from './UpdateDelete';
 import Monsters from './Monsters';
+
 import './App.css';
 
 function App() {
   const [zoneList, setZoneList] = useState([])
   const [monsterList, setMonsterList] = useState([])
+  const [userInput, setUserInput] = useState('')
 
   useEffect(() => {fetch("http://localhost:9292/zones")
   .then(r => r.json())
@@ -29,6 +32,10 @@ function App() {
     .then(r => r.json())
     .then(monsters => setMonsterList(monsters))
   }
+
+  function handleChange(e) {
+    setUserInput(e.target.value)
+  }
   
 
   return (
@@ -38,7 +45,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="zones" element={<Zones zones={zoneList} handleDelete={handleOnDelete} monsterList={monsterList} click={handleOnClick}/>} />
-        <Route path="Monsters" elements={<Monsters monsters={monsterList}/>} />
+        <Route path="updateaddcreatures" element={<UpdateDelete userInput={userInput} handleChange={handleChange}/>} />
       </Routes>
     </div>
   );
