@@ -23,7 +23,11 @@ function App() {
   .then(z => {setMonsterList(z)})}
 
   function handleOnDelete(e) {
-    console.log(e.key)
+    fetch(`http://localhost:9292/monsters/${e.target.id}`, {
+      method: "DELETE"
+    })
+    .then(r => r.json())
+    .then(monsters => setMonsterList(monsters))
   }
   
 

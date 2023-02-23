@@ -11,9 +11,9 @@ console.log(monsterList)
                 <h2><em>{area.name}</em></h2>
                 <p>Region: {area.region}</p>
                 <p>{area.info}</p>
-                <p>
-                    {monsterList ? zoneMonsters.map(monster => {return (<Monsters key={monster.zone_id} monster={monster} handleDelete={handleDelete}/>)}):<p>Scroll to the bottom to show monsters for this region.</p>}
-                </p>
+                <ul>
+                    <li> {monsterList ? zoneMonsters.map(monster => {return (<Monsters key={monster.zone_id} monster={monster} handleDelete={handleDelete}/>)}):<p>Scroll to the bottom to show monsters for this region.</p>}</li>
+                </ul>
             </div>
     )
 }
