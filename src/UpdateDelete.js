@@ -1,12 +1,24 @@
 import React from "react";
 
 
-function UpdateDelete({userInput, handleChange}) {
+function UpdateDelete({name, zone, info, handleNameAdd, handleZoneAdd, handleInfoAdd}) {
 
     return(
         <div>
             <form >
-                <input type="text" name="Creature Name" value={userInput} onChange={handleChange}/>
+                <label>
+                    Name:
+                    <input type="text" name="Creature Name" value={name} onChange={handleNameAdd}/>
+                </label>
+               <label>
+                    Zone:
+                    <input type="text" name="Creature Name" value={zone} onChange={handleZoneAdd}/>
+               </label>
+               <label>
+                    Info:
+                    <input type="text" name="Creature Name" value={info} onChange={handleInfoAdd}/>
+               </label>
+
             </form>
         </div>
     )

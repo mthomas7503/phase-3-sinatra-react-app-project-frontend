@@ -14,7 +14,9 @@ import './App.css';
 function App() {
   const [zoneList, setZoneList] = useState([])
   const [monsterList, setMonsterList] = useState([])
-  const [userInput, setUserInput] = useState('')
+  const [userInputName, setUserInputName] = useState('')
+  const [userInputZone, setUserInputZone] = useState('')
+  const [userInputInfo, setUserInputInfo] = useState('')
 
   useEffect(() => {fetch("http://localhost:9292/zones")
   .then(r => r.json())
@@ -33,10 +35,18 @@ function App() {
     .then(monsters => setMonsterList(monsters))
   }
 
-  function handleChange(e) {
-    setUserInput(e.target.value)
+  function handleNameAdd(e) {
+    setUserInputName(e.target.value)
+    console.log(e.target)
   }
   
+  function handleInfoAdd(e){
+    setUserInputInfo(e.target.value)
+  }
+
+  function handleZoneAdd(e) {
+    setUserInputZone(e.target.value)
+  }
 
   return (
     <div className="App">
@@ -45,7 +55,14 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="zones" element={<Zones zones={zoneList} handleDelete={handleOnDelete} monsterList={monsterList} click={handleOnClick}/>} />
-        <Route path="updateaddcreatures" element={<UpdateDelete userInput={userInput} handleChange={handleChange}/>} />
+        <Route path="updateaddcreatures" 
+          element={<UpdateDelete 
+          zone={userInputZone} 
+          handleZoneAdd={handleZoneAdd} 
+          name={userInputName} 
+          handleNameAdd={handleNameAdd}
+          info={userInputInfo}
+          handleInfoAdd={handleInfoAdd}/>} />
       </Routes>
     </div>
   );
