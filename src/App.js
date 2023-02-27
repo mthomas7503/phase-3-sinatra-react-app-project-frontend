@@ -48,6 +48,28 @@ function App() {
     setUserInputZone(e.target.value)
   }
 
+  function handleSubmit(e) {
+    e.preventDefault();
+    const newMonster = {
+      name: userInputName,
+      zone: userInputZone,
+      info: userInputInfo
+    }
+    fetch('http://localhost:9292/new', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body:JSON.stringify(newMonster)
+    })
+    .then(r => r.json)
+    .then(monsters => setMonsterList(monsters))
+    setUserInputInfo('');
+    setUserInputName('');
+    setUserInputZone('')
+  }
+
   return (
     <div className="App">
       <NavBar />
