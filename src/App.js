@@ -20,12 +20,15 @@ function App() {
 
   useEffect(() => {fetch("http://localhost:9292/zones")
   .then(r => r.json())
-  .then(z => setZoneList(z))}, [monsterList])
+  .then(z => setZoneList(z))}, [])
 
-  function handleOnClick(e) {
-  fetch(`http://localhost:9292/monsters`)
-  .then(r => r.json())
-  .then(z => {setMonsterList(z)})}
+  useEffect(() => {fetch("http://localhost:9292/monsters")
+    .then(r => r.json())
+    .then((m) => {setMonsterList(m)})}, [])
+
+  function handleOnClick() {
+    document.getElementById('monsters').hidden = false
+  }
 
   function handleOnDelete(e) {
     fetch(`http://localhost:9292/monsters/${e.target.id}`, {
@@ -84,7 +87,8 @@ function App() {
           name={userInputName} 
           handleNameAdd={handleNameAdd}
           info={userInputInfo}
-          handleInfoAdd={handleInfoAdd}/>} />
+          handleInfoAdd={handleInfoAdd}
+          handleSubmit={handleSubmit}/>} />
       </Routes>
     </div>
   );
