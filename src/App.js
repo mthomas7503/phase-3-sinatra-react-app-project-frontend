@@ -26,10 +26,6 @@ function App() {
     .then(r => r.json())
     .then((m) => {setMonsterList(m)})}, [])
 
-  function handleOnClick() {
-    document.getElementById('monsters').hidden = false
-  }
-
   function handleOnDelete(e) {
     fetch(`http://localhost:9292/monsters/${e.target.id}`, {
       method: "DELETE"
@@ -66,8 +62,9 @@ function App() {
       },
       body:JSON.stringify(newMonster)
     })
-    .then(r => r.json)
+    .then(r => r.json())
     .then(monsters => setMonsterList(monsters))
+    console.log(newMonster)
     setUserInputInfo('');
     setUserInputName('');
     setUserInputZone('')
@@ -79,7 +76,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
-        <Route path="zones" element={<Zones zones={zoneList} handleDelete={handleOnDelete} monsterList={monsterList} click={handleOnClick}/>} />
+        <Route path="zones" element={<Zones zones={zoneList} handleDelete={handleOnDelete} monsterList={monsterList}/>} />
         <Route path="updateaddcreatures" 
           element={<UpdateDelete 
           zone={userInputZone} 
