@@ -27,7 +27,7 @@ function App() {
 
   useEffect(() => {fetch("http://localhost:9292/monsters")
     .then(r => r.json())
-    .then((m) => {setMonsterList(m)})}, [monsterList])
+    .then((m) => {setMonsterList(m)})}, [])
 
   function handleOnDelete(e) {
     fetch(`http://localhost:9292/monsters/${e.target.id}`, {
@@ -69,7 +69,7 @@ function App() {
       zone: userInputZone,
       info: userInputInfo
     }
-    fetch('http://localhost:9292/updateaddcreatures', {
+    fetch('http://localhost:9292/updateaddmonster', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -85,10 +85,18 @@ function App() {
 
  function handleUpdateSubmit(e) {
   e.preventDefault();
-  let updateInfo
+  const updateInfo = {name: userNameUpdate, info: userInfoUpdate}
 
-  if ({userInfoUpdate, userNameUpdate, userZoneUpdate} === true) {updateInfo = {name: userNameUpdate, zone: userZoneUpdate, info: userInfoUpdate}}
+fetch('http://localhost:9292/updateaddmonster', {
+  method: 'PATCH',
+  headers: {'Content-Type': 'application/json'},
+  body: JSON.stringify(updateInfo)
+})
+.then(r => r.json())
+.then(monsters => setMonsterList(monsters))
+.catch(error => alert("Monster not found!"))
  }
+
 
   return (
     <div className="App">
@@ -97,7 +105,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="zones" element={<Zones zones={zoneList} handleDelete={handleOnDelete} monsterList={monsterList}/>} />
-        <Route path="updateaddcreatures" 
+        <Route path="updateaddmonster" 
           element={<UpdateDelete 
           zone={userInputZone} 
           handleZoneAdd={handleZoneAdd} 
@@ -111,7 +119,8 @@ function App() {
           nameUpdate={userNameUpdate}
           handleNameUpdate={handleNameUpdate}
           infoUpdate={userInfoUpdate}
-          handleInfoUpdate={handleInfoUpdate}/>}/>
+          handleInfoUpdate={handleInfoUpdate}
+          handleUpdateSubmit={handleUpdateSubmit}/>}/>
       </Routes>
     </div>
   );
