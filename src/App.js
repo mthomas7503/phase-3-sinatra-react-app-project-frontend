@@ -17,7 +17,10 @@ function App() {
   const [userInputName, setUserInputName] = useState('')
   const [userInputZone, setUserInputZone] = useState('')
   const [userInputInfo, setUserInputInfo] = useState('')
-
+  const [userNameUpdate, setUserNameUpdate] = useState('')
+  const [userInfoUpdate, setUserInfoUpdate] = useState('')
+  const [userZoneUpdate, setUserZoneUpdate] = useState('')
+ 
   useEffect(() => {fetch("http://localhost:9292/zones")
   .then(r => r.json())
   .then(z => setZoneList(z))}, [])
@@ -47,6 +50,18 @@ function App() {
     setUserInputZone(e.target.value)
   }
 
+  function handleInfoUpdate(e) {
+    setUserInfoUpdate(e.target.value)
+  }
+  
+  function handleZoneUpdate(e){
+    setUserZoneUpdate(e.target.value)
+  }
+
+  function handleNameUpdate(e) {
+    setUserNameUpdate(e.target.value)
+  }
+
   function handleSubmit(e) {
     e.preventDefault();
     const newMonster = {
@@ -57,16 +72,23 @@ function App() {
     fetch('http://localhost:9292/updateaddcreatures', {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
       body:JSON.stringify(newMonster)
     })
-    .then(r => {r.json()})
-    .then((monsters) => {console.log(monsters); setMonsterList([newMonster, ...monsterList])})
+    .then(r => r.json())
+    .then((monsters) => {console.log(monsters); setMonsterList(monsters)})
     setUserInputInfo('');
     setUserInputName('');
     setUserInputZone('')
   }
+
+ function handleUpdateSubmit(e) {
+  e.preventDefault();
+  let updateInfo
+
+  if ({userInfoUpdate, userNameUpdate, userZoneUpdate} === true) {updateInfo = {name: userNameUpdate, zone: userZoneUpdate, info: userInfoUpdate}}
+ }
 
   return (
     <div className="App">
@@ -83,7 +105,13 @@ function App() {
           handleNameAdd={handleNameAdd}
           info={userInputInfo}
           handleInfoAdd={handleInfoAdd}
-          handleSubmit={handleSubmit}/>} />
+          handleSubmit={handleSubmit}
+          zoneUpdate={userZoneUpdate}
+          handleZoneUpdate={handleZoneUpdate}
+          nameUpdate={userNameUpdate}
+          handleNameUpdate={handleNameUpdate}
+          infoUpdate={userInfoUpdate}
+          handleInfoUpdate={handleInfoUpdate}/>}/>
       </Routes>
     </div>
   );
