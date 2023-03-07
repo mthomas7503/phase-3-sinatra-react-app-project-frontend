@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {fetch("http://localhost:9292/monsters")
     .then(r => r.json())
-    .then((m) => {setMonsterList(m)})}, [])
+    .then((m) => {setMonsterList(m)})}, [monsterList])
 
   function handleOnDelete(e) {
     fetch(`http://localhost:9292/monsters/${e.target.id}`, {
@@ -36,7 +36,7 @@ function App() {
 
   function handleNameAdd(e) {
     setUserInputName(e.target.value)
-    console.log(e.target)
+
   }
   
   function handleInfoAdd(e){
@@ -54,17 +54,15 @@ function App() {
       zone: userInputZone,
       info: userInputInfo
     }
-    fetch('http://localhost:9292/new', {
+    fetch('http://localhost:9292/updateaddcreatures', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
       },
       body:JSON.stringify(newMonster)
     })
-    .then(r => r.json())
-    .then(monsters => setMonsterList(monsters))
-    console.log(newMonster)
+    .then(r => {r.json()})
+    .then((monsters) => {console.log(monsters); setMonsterList([newMonster, ...monsterList])})
     setUserInputInfo('');
     setUserInputName('');
     setUserInputZone('')

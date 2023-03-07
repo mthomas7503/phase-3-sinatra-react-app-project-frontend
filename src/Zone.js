@@ -12,7 +12,7 @@ function Zone({ area, monsterList, handleDelete }) {
                 <p>{area.info}</p>
                  <h3><u>Monsters</u></h3>
                 <ul id='monsters'>
-                    <li> {zoneMonsters.map(monster => {return (<Monsters key={monster.zone_id} monster={monster} handleDelete={handleDelete}/>)})}</li>
+                    <li> {zoneMonsters.map((monster,index) => {return (<Monsters key={index} monster={monster} handleDelete={handleDelete}/>)})}</li>
                 </ul>
             </div>
     )

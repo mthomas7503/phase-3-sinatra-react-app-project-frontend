@@ -8,15 +8,15 @@ function UpdateDelete({name, zone, info, handleNameAdd, handleZoneAdd, handleInf
             <form onSubmit={handleSubmit}>
                 <label>
                     Name:
-                    <input type="text" name="Creature Name" value={name} onChange={handleNameAdd}/>
+                    <input type="text" value={name} onChange={handleNameAdd}/>
                 </label>
                <label>
                     Zone:
-                    <input type="text" name="Creature Name" value={zone} onChange={handleZoneAdd}/>
+                    <input type="text" value={zone} onChange={handleZoneAdd}/>
                </label>
                <label>
                     Info:
-                    <input type="text" name="Creature Name" value={info} onChange={handleInfoAdd}/>
+                    <input type="text" value={info} onChange={handleInfoAdd}/>
                </label>
             <button type="submit"> Add Monster</button>
             </form>
