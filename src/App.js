@@ -76,8 +76,8 @@ function App() {
       },
       body:JSON.stringify(newMonster)
     })
-    .then(r => r.json())
-    .then((monsters) => {console.log(monsters); setMonsterList(monsters)})
+    .then(r => r.text())
+    .then((monsters) => {console.log(monsters)})
     setUserInputInfo('');
     setUserInputName('');
     setUserInputZone('')
@@ -94,8 +94,7 @@ fetch('http://localhost:9292/monsters', {
 })
 .then(r => r.json())
 .then(monsters => setMonsterList(monsters))
-.catch(error => alert("Monster not found!"))
-
+.catch(() => alert("Monster not found!"))
 setUserInfoUpdate('')
 setUserNameUpdate('')
  }
