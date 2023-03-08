@@ -1,7 +1,7 @@
 import React from "react";
 
 
-function UpdateDelete({name, zone, info, handleNameAdd, handleZoneAdd, handleInfoAdd, handleSubmit, nameUpdate, zoneUpdate, infoUpdate, handleInfoUpdate, handleZoneUpdate, handleNameUpdate}) {
+function UpdateDelete({name, zone, info, handleNameAdd, handleZoneAdd, handleInfoAdd, handleSubmit, handleUpdateSubmit, nameUpdate, zoneUpdate, infoUpdate, handleInfoUpdate, handleZoneUpdate, handleNameUpdate}) {
 
     return(
         <div>
@@ -22,14 +22,10 @@ function UpdateDelete({name, zone, info, handleNameAdd, handleZoneAdd, handleInf
             <button type="submit"> Add Monster</button>
             </form>
             Or update an existing one
-            <form>
+            <form onSubmit={handleUpdateSubmit}>
                 <label>
                     Name:
                     <input type="text" value={nameUpdate} onChange={handleNameUpdate}/>
-                </label>
-                <label>
-                    Zone: 
-                    <input type="text" value={zoneUpdate} onChange={handleZoneUpdate}/>
                 </label>
                 <label>
                     Info:

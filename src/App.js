@@ -69,7 +69,7 @@ function App() {
       zone: userInputZone,
       info: userInputInfo
     }
-    fetch('http://localhost:9292/updateaddmonster', {
+    fetch('http://localhost:9292/monsters', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
@@ -87,7 +87,7 @@ function App() {
   e.preventDefault();
   const updateInfo = {name: userNameUpdate, info: userInfoUpdate}
 
-fetch('http://localhost:9292/updateaddmonster', {
+fetch('http://localhost:9292/monsters', {
   method: 'PATCH',
   headers: {'Content-Type': 'application/json'},
   body: JSON.stringify(updateInfo)
@@ -95,6 +95,9 @@ fetch('http://localhost:9292/updateaddmonster', {
 .then(r => r.json())
 .then(monsters => setMonsterList(monsters))
 .catch(error => alert("Monster not found!"))
+
+setUserInfoUpdate('')
+setUserNameUpdate('')
  }
 
 
