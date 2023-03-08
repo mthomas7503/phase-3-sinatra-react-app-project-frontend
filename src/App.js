@@ -76,8 +76,8 @@ function App() {
       },
       body:JSON.stringify(newMonster)
     })
-    .then(r => r.text())
-    .then((monsters) => {console.log(monsters)})
+    .then(r => r.json())
+    .then((monsters) => {setMonsterList(monsters)})
     setUserInputInfo('');
     setUserInputName('');
     setUserInputZone('')
