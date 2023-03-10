@@ -54,3 +54,9 @@
   width: 100%;
   text-align: center;
 }
+
+#zones {
+  background-image: url('../6644.png');
+  height: 100vh;
+  color: white
+}
