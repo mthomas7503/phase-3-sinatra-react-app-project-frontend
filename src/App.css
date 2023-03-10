@@ -60,3 +60,21 @@
   height: 100vh;
   color: white
 }
+
+#newform {
+  padding-bottom: 30px;
+  padding-top: 5px;
+}
+
+#updateform {
+  padding-top: 5px;
+}
+
+#inputpage {
+  padding-top: 10px;
+  background-image: url('../FFXIV_Kefka_concept.webp');
+  background-size: 100%;
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+}

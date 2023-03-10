@@ -4,9 +4,9 @@ import React from "react";
 function UpdateDelete({name, zone, info, handleNameAdd, handleZoneAdd, handleInfoAdd, handleSubmit, handleUpdateSubmit, nameUpdate, zoneUpdate, infoUpdate, handleInfoUpdate, handleZoneUpdate, handleNameUpdate}) {
 
     return(
-        <div>
+        <div id='inputpage'>
             Add a new monster!
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} id='newform'>
                 <label>
                     Name:
                     <input type="text" value={name} onChange={handleNameAdd}/>
@@ -22,7 +22,7 @@ function UpdateDelete({name, zone, info, handleNameAdd, handleZoneAdd, handleInf
             <button type="submit"> Add Monster</button>
             </form>
             Or update an existing one
-            <form onSubmit={handleUpdateSubmit}>
+            <form onSubmit={handleUpdateSubmit} id="updateform">
                 <label>
                     Name:
                     <input type="text" value={nameUpdate} onChange={handleNameUpdate}/>
