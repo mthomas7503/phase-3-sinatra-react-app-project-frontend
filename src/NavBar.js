@@ -1,16 +1,16 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function NavBar() {
 
     let linkColor = "blue"
   
     return(
-        <div>
-            <NavLink style={{color: `${linkColor}`}} to="/">Home</NavLink>
-            <NavLink style={{color: `${linkColor}`}} to="/about">About</NavLink>
-            <NavLink style={{color: `${linkColor}`}} to='/zones'>Zones</NavLink>
-            <NavLink style={{color: `${linkColor}`}}  to='/updateaddmonster'>Update/Add Monsters</NavLink>
+        <div id='nav'>
+            <Link class="navBarLink" style={{color: `${linkColor}`}} to="/">Home</Link>
+            <Link class="navBarLink" style={{color: `${linkColor}`}} to="/about">About</Link>
+            <Link class="navBarLink" style={{color: `${linkColor}`}} to='/zones'>Zones</Link>
+            <Link class="navBarLink" style={{color: `${linkColor}`}}  to='/updateaddmonster'>Update/Add Monsters</Link>
         </div>
     )
 }

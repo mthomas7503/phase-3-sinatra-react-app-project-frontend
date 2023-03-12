@@ -53,12 +53,18 @@
   height: 100vh;
   width: 100%;
   text-align: center;
+  size-adjust:inherit;
+}
+
+ul{
+  list-style: none;
 }
 
 #zones {
-  background-image: url('../6644.png');
+  background-image: url('../ff6wallpaper23-1440x900.jpg');
   height: 100vh;
-  color: white
+  color: black;
+  font-size: medium;
 }
 
 #newform {
@@ -78,3 +84,10 @@
   width: 100%;
   text-align: center;
 }
+
+.navBarLink {
+  margin: 5px;
+  font-family: cursive;
+  font-size:larger;
+}
+
